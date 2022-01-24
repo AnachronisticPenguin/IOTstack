@@ -1,0 +1,15 @@
+ntfy:
+  container_name: ntfy
+  image: binwiederhier/ntfy:latest
+  ports:
+    - "8020:80/tcp"
+  environment:
+    - base-url=https://ntfy.sh
+    - attachment-cache-dir=/var/cache/ntfy/attachments
+
+  volumes:
+      - ./volumes/ntfy/var-cache-ntfy-attachments:/var/cache/ntfy/attachments
+  restart: unless-stopped
+  networks:
+    - iotstack_nw
+
